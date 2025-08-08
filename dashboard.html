@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>IIUC Course Tracker - Dashboard</title>
+    <style>
+        /* Reset and base */
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            margin: 0;
+            background: #f4f7fa;
+            color: #333;
+            padding: 20px 40px;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0 30px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #222;
+            user-select: none;
+        }
+        .logout-btn {
+            background-color: #007bff;
+            border: none;
+            padding: 10px 18px;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .logout-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            margin: 30px 0 50px 0;
+            padding: 25px 30px;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 6px 16px rgb(32 33 36 / 8%);
+        }
+        .profile-section h2 {
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+        }
+        .profile-section h2 span {
+            color: #007bff;
+        }
+        .profile-section p {
+            color: #666;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 25px;
+        }
+        .stat-box {
+            background: #f0f4f8;
+            border-radius: 12px;
+            padding: 20px 15px;
+            text-align: center;
+            user-select: none;
+        }
+        .stat-box h3 {
+            margin: 0;
+            font-size: 2.3rem;
+            color: #007bff;
+            font-weight: 700;
+        }
+        .stat-box p {
+            margin-top: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        /* Courses Section */
+        .courses-section {
+            margin-bottom: 50px;
+        }
+        .courses-section h2 {
+            font-weight: 700;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #222;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 12px;
+            letter-spacing: 1.2px;
+            user-select: none;
+        }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 24px;
+        }
+
+        /* Course Card */
+        .course-card {
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgb(32 33 36 / 8%);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            user-select: none;
+        }
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgb(32 33 36 / 20%);
+        }
+
+        /* Top image area with icon */
+        .course-card .course-img {
+            position: relative;
+            height: 130px;
+            background-size: 80px 80px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-bottom: 1px solid #eee;
+            filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));
+        }
+
+        /* For demonstration, we use different backgrounds for categories */
+        /* Use actual icons from URLs or base64 in real project */
+        .cs-bg {
+            background-color: #2a67f2;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/18/C_Programming_Language.svg');
+            background-position: center 35px;
+        }
+        .math-bg {
+            background-color: #e07c24;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2c/Integral_symbol.svg');
+            background-position: center 30px;
+        }
+        .phy-bg {
+            background-color: #0a9396;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e1/Physics-symbol.svg');
+            background-position: center 30px;
+        }
+        .eng-bg {
+            background-color: #9c27b0;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/20/Book_icon.svg');
+            background-position: center 30px;
+        }
+        .isl-bg {
+            background-color: #d94f3d;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/38/Islamic_Crescent.svg');
+            background-position: center 30px;
+        }
+
+        /* Text content */
+        .course-card .tag {
+            font-weight: 700;
+            padding: 6px 14px;
+            color: white;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            width: fit-content;
+            margin: 15px 20px 6px 20px;
+            user-select: none;
+        }
+        .tag.cs {
+            background-color: #2a67f2;
+        }
+        .tag.math {
+            background-color: #e07c24;
+        }
+        .tag.phy {
+            background-color: #0a9396;
+        }
+        .tag.eng {
+            background-color: #9c27b0;
+        }
+        .tag.isl {
+            background-color: #d94f3d;
+        }
+
+        .course-card h3 {
+            font-size: 1.25rem;
+            margin: 0 20px 6px 20px;
+            font-weight: 700;
+            color: #222;
+            user-select: text;
+        }
+        .course-card .instructor {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #777;
+            margin: 0 20px 10px 20px;
+            user-select: text;
+        }
+        .course-card .desc {
+            font-size: 0.9rem;
+            margin: 0 20px 15px 20px;
+            color: #555;
+            user-select: text;
+        }
+
+        .card-footer {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 600;
+            background: #f0f4f8;
+            padding: 12px 20px;
+            border-top: 1px solid #eee;
+            margin-top: auto;
+            border-radius: 0 0 14px 14px;
+            user-select: none;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">🎓 IIUC Course Tracker</div>
+        <div class="nav-profile">
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+    </nav>
+
+    <!-- Profile Summary -->
+    <section class="profile-section">
+        <h2>Welcome back, <span>Student</span> 👋</h2>
+        <p>Here’s your semester overview.</p>
+        <div class="stats-grid">
+            <div class="stat-box">
+                <h3>6</h3>
+                <p>Enrolled Courses</p>
+            </div>
+            <div class="stat-box">
+                <h3>18</h3>
+                <p>Total Credits</p>
+            </div>
+            <div class="stat-box">
+                <h3>3.75</h3>
+                <p>Current GPA</p>
+            </div>
+            <div class="stat-box">
+                <h3>12</h3>
+                <p>Weeks Remaining</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses -->
+    <section class="courses-section">
+        <h2>Your Courses</h2>
+        <div class="card-container">
+            <div class="course-card" onclick="window.location.href='course.html';">
+                <div class="course-img cs-bg"></div>
+                <span class="tag cs">CSE 101</span>
+                <h3>Introduction to Programming</h3>
+                <p class="instructor">Dr. Rahman Ahmed</p>
+                <p class="desc">Fundamentals of programming in C++ and problem-solving techniques.</p>
+                <div class="card-footer">16 weeks | 120 students | 3 credits</div>
+            </div>
+            <div class="course-card" onclick="window.location.href='course.html';">
+                <div class="course-img math-bg"></div>
+                <span class="tag math">MAT 201</span>
+                <h3>Calculus II</h3>
+                <p class="instructor">Prof. Sarah Khan</p>
+                <p class="desc">Integration techniques, series, and differential equations.</p>
+                <div class="card-footer">16 weeks | 85 students | 4 credits</div>
+            </div>
+            <div class="course-card" onclick="window.location.href='course.html';">
+                <div class="course-img phy-bg"></div>
+                <span class="tag phy">PHY 101</span>
+                <h3>Physics I</h3>
+                <p class="instructor">Dr. Mohammad Ali</p>
+                <p class="desc">Mechanics, thermodynamics, and wave phenomena.</p>
+                <div class="card-footer">16 weeks | 95 students | 3 credits</div>
+            </div>
+            <div class="course-card" onclick="window.location.href='course.html';">
+                <div class="course-img eng-bg"></div>
+                <span class="tag eng">ENG 102</span>
+                <h3>Academic Writing</h3>
+                <p class="instructor">Ms. Fatima Begum</p>
+                <p class="desc">Academic writing, research methods, and presentation skills.</p>
+                <div class="card-footer">16 weeks | 150 students | 3 credits</div>
+            </div>
+            <div class="course-card" onclick="window.location.href='course.html';">
+                <div class="course-img cs-bg"></div>
+                <span class="tag cs">CSE 201</span>
+                <h3>Data Structures</h3>
+                <p class="instructor">Dr. Karim Hassan</p>
+                <p class="desc">Linear & non-linear data structures, algorithms, complexity.</p>
+                <div class="card-footer">16 weeks | 78 students | 3 credits</div>
+            </div>
+            <div class="course-card" onclick="window.location.href='course.html';">
+                <div class="course-img isl-bg"></div>
+                <span class="tag isl">ISL 101</span>
+                <h3>Islamic Studies</h3>
+                <p class="instructor">Maulana Abdul Malik</p>
+                <p class="desc">Teachings of Islam, Quran, Hadith, and Islamic civilization.</p>
+                <div class="card-footer">16 weeks | 200 students | 2 credits</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function logout() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSE 101 - Introduction to Programming</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">🎓 IIUC Course Tracker</div>
+        <div class="nav-profile">
+            <!-- <img class="profile-icon" src="https://mir-s3-cdn-cf.behance.net/user/276/7bb3991623324013.65ab99587e82d.jpg" alt="Profile"> -->
+            <button class="logout-btn" onclick="logout()">Log Out</button>
+        </div>
+    </nav>
+
+    <!-- Course Banner -->
+    <header class="course-banner">
+        <div class="banner-content">
+            <!-- <img class="dash-avatar" src="https://mir-s3-cdn-cf.behance.net/user/276/7bb3991623324013.65ab99587e82d.jpg" alt="Student"> -->
+            <div>
+                <h1>CSE 101: Introduction to Programming</h1>
+                <p class="instructor">Instructor: <b>Dr. Rahman Ahmed</b></p>
+                <p class="desc">This course introduces fundamental concepts of programming using C++ language. Students will learn problem-solving techniques, basic algorithms, and programming best practices.</p>
+                <div class="course-meta">
+                    <span>📘 Credits: 3</span>
+                    <span>📅 Weeks: 16</span>
+                    <span>👥 Students: 120</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Course Documents -->
+    <section class="section">
+        <h2>📄 Course Documents</h2>
+        <div class="card-container">
+            <div class="doc-card">
+                <h3>📑 Course Syllabus</h3>
+                <p>Complete course syllabus and grading policy</p>
+                <button class="main-btn">Download PDF</button>
+            </div>
+            <div class="doc-card">
+                <h3>💻 Programming Assignment 1</h3>
+                <p>Basic C++ programming exercises</p>
+                <button class="main-btn">View Google Doc</button>
+            </div>
+            <div class="doc-card">
+                <h3>📘 Lecture Notes - Week 1</h3>
+                <p>Introduction to programming concepts</p>
+                <button class="main-btn">Download PDF</button>
+            </div>
+            <div class="doc-card">
+                <h3>🧪 Lab Manual</h3>
+                <p>Hands-on programming exercises and solutions</p>
+                <button class="main-btn">View Google Doc</button>
+            </div>
+            <div class="doc-card">
+                <h3>📚 Reference Materials</h3>
+                <p>Additional reading materials and C++ references</p>
+                <button class="main-btn">Download PDF</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Videos -->
+    <section class="section">
+        <h2>🎥 Course Videos</h2>
+        <div class="video-grid">
+            <div class="video-card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/eI4an8aSsgw?si=iKHluKo4i1psvKEJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>Calculus</p>
+            </div>
+            <div class="video-card">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/vLnPwxZdW4Y?si=a34EA9uDeY4KjSSV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>C++ Tutorial for Beginners - Full Course</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function logout() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

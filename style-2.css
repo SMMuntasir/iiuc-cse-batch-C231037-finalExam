@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9fafc;
+    color: #222;
+}
+
+/* Navbar */
+.navbar {
+    background: #4b6cb7;
+    background: linear-gradient(90deg, #4b6cb7, #182848);
+    padding: 1em 2em;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-weight: bold;
+    font-size: 1.3em;
+}
+.nav-profile {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+.profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.logout-btn {
+    background: #ff4b5c;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.logout-btn:hover {
+    background: #e43f4d;
+}
+
+/* Profile Section */
+.profile-section {
+    text-align: center;
+    padding: 2em 1em;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    margin: 1em auto;
+    max-width: 900px;
+    border-radius: 12px;
+}
+.dash-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 3px solid #4b6cb7;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(120px,1fr));
+    gap: 1.5em;
+    margin-top: 1.5em;
+}
+.stat-box {
+    background: #f0f4ff;
+    padding: 1em;
+    border-radius: 8px;
+}
+.stat-box h3 {
+    margin: 0;
+    font-size: 1.6em;
+    color: #4b6cb7;
+}
+.stat-box p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Courses Section */
+.courses-section {
+    max-width: 1200px;
+    margin: 2em auto;
+    padding: 0 1em;
+}
+.courses-section h2 {
+    margin-bottom: 1em;
+    color: #182848;
+}
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 1.5em;
+}
+.course-card {
+    background: white;
+    padding: 1.5em;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+.tag {
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    border-radius: 6px;
+    font-size: 0.8em;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: white;
+}
+.tag.cs { background: #4b6cb7; }
+.tag.math { background: #ff9800; }
+.tag.phy { background: #009688; }
+.tag.eng { background: #673ab7; }
+.tag.isl { background: #3f51b5; }
+.instructor {
+    font-size: 0.9em;
+    color: #777;
+    margin: 0.3em 0;
+}
+.desc {
+    font-size: 0.9em;
+    color: #444;
+    margin: 0.5em 0 1em;
+}
+.card-footer {
+    font-size: 0.85em;
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: 0.5em;
+}
