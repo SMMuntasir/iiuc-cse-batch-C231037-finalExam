@@ -38,3 +38,20 @@ It includes:
 
 ## 📂 Project Structure
 
+📁 IIUC-Student-Portal
+│
+├── index.html # Login Page
+├── dashboard.html # Dashboard Page
+├── course.html # Course Details Page
+│
+├── css/
+│ ├── styles.css # Global styles
+│ ├── style-2.css # Dashboard-specific styles
+│
+├── images/ # All images & icons
+│
+├── js/
+│ └── script.js # Page functionality (if separated later)
+│
+└── README.md # Project documentation
+
